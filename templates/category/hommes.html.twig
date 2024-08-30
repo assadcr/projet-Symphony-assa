@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Belle Éclat{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Bienvenue chez Belle Éclat</h1>
+    <div class="container mt-4">
+        <h2 class="text-center">Parfums Pour Lui</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/img4.jpg') }}" class="card-img-top img-fluid" alt="Parfum 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Parfum 1</h5>
+                        <p class="card-text">Description courte du parfum 1.</p>
+                        <a href="#" class="btn btn-primary">Acheter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/img3.jpg') }}" class="card-img-top img-fluid" alt="Parfum 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Parfum 2</h5>
+                        <p class="card-text">Description courte du parfum 2.</p>
+                        <a href="#" class="btn btn-primary">Acheter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/img5.jpg') }}" class="card-img-top" alt="Parfum 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Parfum 3</h5>
+                        <p class="card-text">Description courte du parfum 3.</p>
+                        <a href="#" class="btn btn-primary">Acheter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-center mt-5">Coffret pour lui!</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/img6.jpg') }}" class="card-img-top img-fluid" alt="Parfum spécial">
+                    <div class="card-body">
+                        <h5 class="card-title">Promo Parfum 1</h5>
+                        <p class="card-text">Description courte de la promo 1.</p>
+                        <a href="#" class="btn btn-danger">Acheter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/img7.jpg') }}" class="card-img-top" alt="Promo Parfum 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Promo Parfum 2</h5>
+                        <p class="card-text">Description courte de la promo 2.</p>
+                        <a href="#" class="btn btn-danger">Acheter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/img8.jpg') }}" class="card-img-top" alt="Promo Parfum 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Promo Parfum 3</h5>
+                        <p class="card-text">Description courte de la promo 3.</p>
+                        <a href="#" class="btn btn-danger">Acheter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
