@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une commande{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+
+    <h2 class="mt-4">Récapitulatif du panier</h2>
+    {% if cartContent is defined and cartContent.dataCart is defined and cartContent.dataCart is not empty %}
+        <ul class="list-group mb-4">
+            {% for item in cartContent.dataCart %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{ item.product.name }} - Quantité : {{ item.quantity }}</span>
+                    <span class="badge bg-primary rounded-pill">{{ item.total }} €</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p class="fw-bold fs-5 text-end">Total : {{ cartContent.total }} €</p>
+        
+        {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+        
+        <div class="mb-3">
+            {{ form_label(form.clientName, 'Nom du client', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.clientName, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.clientName) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.clientEmail, 'Email du client', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.clientEmail, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.clientEmail) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.shippingAddress, 'Adresse de livraison', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.shippingAddress, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.shippingAddress) }}
+        </div>
+
+        {# Nous retirons l'adresse de facturation comme demandé #}
+
+        <button type="submit" class="btn btn-primary mt-3">Passer la commande</button>
+        
+        {{ form_end(form) }}
+    {% else %}
+        <p class="alert alert-info">Le panier est vide.</p>
+    {% endif %}
+</div>
+{% endblock %}

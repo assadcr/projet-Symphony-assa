@@ -10,11 +10,15 @@ class CategorieFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $categories = ['Parfums', 'Coffrets de senteurs'];
+        $categories = [
+            'Parfums' => 'Une collection de parfums exquis pour tous les goûts.',
+            'Coffrets de senteurs' => 'Des ensembles de parfums soigneusement sélectionnés pour une expérience olfactive complète.'
+        ];
 
-        foreach ($categories as $categorieName) {
+        foreach ($categories as $categorieName => $description) {
             $categorie = new Categorie();
             $categorie->setNom($categorieName);
+            $categorie->setDescription($description);
             $manager->persist($categorie);
         }
 

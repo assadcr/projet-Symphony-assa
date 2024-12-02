@@ -1,0 +1,10 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Paiement réussi{% endblock %}
+
+{% block body %}
+    <h1>Paiement réussi</h1>
+    <p>Merci pour votre commande n°{{ order.orderNumber }}. Votre paiement a été traité avec succès.</p>
+    <p>Montant total payé : {{ order.totalAmount|number_format(2, ',', ' ') }} €</p>
+    <a href="{{ path('front_home') }}" class="btn btn-primary">Retour à l'accueil</a>
+{% endblock %}

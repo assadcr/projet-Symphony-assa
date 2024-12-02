@@ -1,0 +1,45 @@
+<header class="mb-5">
+	<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+		<div class="container-fluid ">
+			<a class="navbar-brand d-flex align-items-center" href={{ path('front_home_index') }}>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav w-100">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href={{ path('front_home_index') }}>Accueil</a>
+					</li>
+
+					{% if is_granted('ROLE_ADMIN') %}
+						<li class="nav-item ms-auto">
+							<a class="nav-link" href={{ path('admin_dashboard_index')}}>Dashboard</a>
+						</li>
+					{% endif %}
+
+					{% if is_granted('IS_AUTHENTICATED') %}
+						<li class="nav-item ms-auto">
+							<a class="nav-link" href={{ path('front_profile_index') }}>Profil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href={{ path('app_logout') }}>Deconnexion</a>
+						</li>
+					{% else %}
+						<li class="nav-item ms-auto">
+							<a class="nav-link" href={{ path('app_login') }}>Connexion</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href={{ path('app_register') }}>Inscription</a>
+						</li>
+					{% endif %}
+					<li class="nav-item">
+						<a class="nav-link" href={{ path('front_cart_index')}}>
+							
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>

@@ -1,0 +1,53 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Parfums pour Hommes - Belle Éclat{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center" style="background-color: #ceccfe;">
+    <h1 class="display-4">Parfums pour Hommes</h1>
+    <p class="lead">Découvrez notre collection exclusive de parfums et coffrets pour hommes.</p>
+    <hr class="my-4">
+</div>
+
+<div class="container mt-4">
+    <section class="mb-5">
+        <h2 class="text-center mb-4" style="color: #ceccfe;">Nos Parfums</h2>
+        <div class="row">
+            {% set images = ['parfum_femme_1.jpg', 'parfum_femme_2.jpg', 'parfum_femme_3.jpg', 'parfum_femme_4.jpg', 'parfum_femme_5.jpg'] %}
+            {% for i in 0..4 %}
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100">
+                        <img src="{{ asset('images/products/' ~ images[i]) }}" class="card-img-top img-fluid" alt="Parfum Homme {{ i+1 }}" style="height: 200px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Parfum Homme {{ i+1 }}</h5>
+                            <p class="card-text flex-grow-1">Description du parfum homme {{ i+1 }}...</p>
+                            <p class="card-text">Prix: {{ (random(3000, 8000) / 100)|number_format(2, '.', ',') }} €</p>
+                            <a href="{{ path('front_home_show', {'slug': 'parfum-homme-' ~ (i+1)}) }}" class="btn btn-primary mt-auto">Voir détails</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section>
+        <h2 class="text-center mb-4" style="color: #ceccfe;">Nos Coffrets</h2>
+        <div class="row">
+            {% set coffret_images = ['parfum_femme_6.jpg', 'coffrets.jpg', 'coffrets1.jpg', 'parfum_homme_1.jpg'] %}
+            {% for i in 0..3 %}
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100">
+                        <img src="{{ asset('images/products/' ~ coffret_images[i]) }}" class="card-img-top img-fluid" alt="Coffret Homme {{ i+1 }}" style="height: 200px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Coffret Homme {{ i+1 }}</h5>
+                            <p class="card-text flex-grow-1">Description du coffret homme {{ i+1 }}...</p>
+                            <p class="card-text">Prix: {{ (random(5000, 10000) / 100)|number_format(2, '.', ',') }} €</p>
+                            <a href="{{ path('front_home_show', {'slug': 'coffret-homme-' ~ (i+1)}) }}" class="btn btn-primary mt-auto">Voir détails</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

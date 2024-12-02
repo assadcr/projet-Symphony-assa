@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block content_title %}Logs du système{% endblock %}
+
+{% block main %}
+    <div class="logs-container">
+        {% if logs is empty %}
+            <p>Aucun log disponible pour le moment.</p>
+        {% else %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Niveau</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                        <tr>
+                            <td>{{ log.date }}</td>
+                            <td>{{ log.level }}</td>
+                            <td>{{ log.message }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

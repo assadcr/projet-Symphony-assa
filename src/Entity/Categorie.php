@@ -19,8 +19,8 @@ class Categorie
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
+    #[ORM\Column(type: Types::TEXT , nullable:true)]
+    private ?string $description;
 
     #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'categorie')]
     private Collection $product;

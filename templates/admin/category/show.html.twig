@@ -1,0 +1,46 @@
+{# templates/admin/categorie/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la catégorie{% endblock %}
+
+{% block body %}
+    <h1>Détails de la catégorie</h1>
+
+    <div class="categorie-details">
+        <h2>{{ categorie.name }}</h2>
+        <p>{{ categorie.description }}</p>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ ea_url()
+                .setController('App\\Controller\\Admin\\CategorieCrudController')
+                .setAction('edit')
+                .setEntityId(categorie.id) }}" 
+               class="btn btn-primary">
+                <i class="fas fa-edit"></i> Modifier
+            </a>
+        {% endif %}
+    </div>
+
+    <h3>Produits dans cette catégorie</h3>
+    <ul>
+        {% for product in categorie.products %}
+            <li>
+                {{ product.name }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ ea_url()
+                        .setController('App\\Controller\\Admin\\ProductCrudController')
+                        .setAction('edit')
+                        .setEntityId(product.id) }}"
+                       class="btn btn-sm btn-secondary">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                {% endif %}
+            </li>
+        {% else %}
+            <li>Aucun produit dans cette catégorie.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('admin_categories') }}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}

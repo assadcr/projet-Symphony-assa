@@ -1,0 +1,20 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}Produits
+{% endblock %}
+
+{% block body %}
+	<main>
+		<section>
+			<h1>Ajouter un nouveau produit</h1>
+			<div>
+				{{ form_start(form) }}
+				{{ form_rest(form) }}
+				<input type="submit" value="Modifier" class="btn btn-primary mb-4">
+				{{ form_end(form) }}
+			</div>
+		</section>
+	</main>
+{% endblock %}
+

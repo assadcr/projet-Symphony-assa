@@ -1,0 +1,45 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Liste des Produits{% endblock %}
+
+{% block body %}
+    <h1>Liste des Produits</h1>
+
+    <a href="{{ path('admin_product_new') }}" class="btn btn-primary mb-3">Ajouter un nouveau produit</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Catégorie</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }} €</td>
+                <td>{{ product.categorie }}</td>
+                <td>{{ product.stock }}</td>
+                <td>
+                    <a href="{{ path('admin_product_show', {'id': product.id}) }}" class="btn btn-sm btn-info">Voir</a>
+                    <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-sm btn-warning">Modifier</a>
+                    <form method="post" action="{{ path('admin_product_delete', {'id': product.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                        <button class="btn btn-sm btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun produit trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

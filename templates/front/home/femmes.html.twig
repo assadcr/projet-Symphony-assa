@@ -1,0 +1,95 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Parfums pour Femmes - Belle Éclat{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .jumbotron {
+            background-color: #fccdfe;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            transition: transform 0.3s;
+            margin-bottom: 1.5rem;
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .section-title {
+            color: #fccdfe;
+            margin-bottom: 1.5rem;
+            padding-top: 1.5rem;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        @media (max-width: 576px) {
+            .jumbotron {
+                padding: 1rem 0.5rem;
+            }
+            .card-img-top {
+                height: 150px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Parfums pour Femmes</h1>
+    <p class="lead">Découvrez notre collection exclusive de parfums et coffrets pour femmes.</p>
+    <hr class="my-4">
+</div>
+
+<div class="container">
+    <section class="mb-5">
+        <h2 class="text-center section-title">Nos Parfums</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+            {% for product in products|slice(0, 5) %}
+                <div class="col">
+                    <div class="card shadow">
+                        {% if product.image %}
+                            <img src="{{ asset('images/products/' ~ product.image) }}" class="card-img-top" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{{ asset('images/default-product.jpg') }}" class="card-img-top" alt="{{ product.name }}">
+                        {% endif %}
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text flex-grow-1">{{ product.description|slice(0, 50) }}...</p>
+                            <p class="card-text"><strong>Prix: {{ product.price }} €</strong></p>
+                            <a href="{{ path('front_home_show', {'slug': product.slug}) }}" class="btn btn-primary mt-auto">Voir détails</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="text-center section-title">Nos Coffrets</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+            {% for product in products|slice(5, 4) %}
+                <div class="col">
+                    <div class="card shadow">
+                        {% if product.image %}
+                            <img src="{{ asset('images/products/' ~ product.image) }}" class="card-img-top" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{{ asset('images/default-product.jpg') }}" class="card-img-top" alt="{{ product.name }}">
+                        {% endif %}
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text flex-grow-1">{{ product.description|slice(0, 50) }}...</p>
+                            <p class="card-text"><strong>Prix: {{ product.price }} €</strong></p>
+                            <a href="{{ path('front_home_show', {'slug': product.slug}) }}" class="btn btn-primary mt-auto">Voir détails</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Informations Légales - {{ company_name }}{% endblock %}
+
+{% block body %}
+<main class="container mt-5">
+    <h1 class="mb-4">Informations Légales</h1>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <section class="mb-5">
+                <h2 class="h3 mb-3">1. Informations sur l'entreprise</h2>
+                <p><strong>{{ company_name }}</strong> est une société enregistrée en France.</p>
+                <ul class="list-unstyled">
+                    <li><strong>Adresse :</strong> {{ company_address }}</li>
+                    <li><strong>Email :</strong> {{ company_email }}</li>
+                    <li><strong>Téléphone :</strong> {{ company_phone }}</li>
+                    <li><strong>RCS :</strong> {{ company_rcs }}</li>
+                    <li><strong>Capital social :</strong> {{ company_capital }}</li>
+                </ul>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-3">2. Propriété intellectuelle</h2>
+                <p>Le site {{ website_url }} est la propriété exclusive de {{ company_name }}. Toute reproduction ou utilisation non autorisée des éléments du site est strictement interdite.</p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-3">3. Protection des données personnelles</h2>
+                <p>Conformément à la loi Informatique et Libertés du 6 janvier 1978 modifiée, vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant. Pour exercer ce droit, veuillez nous contacter à l'adresse : {{ company_email }}.</p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-3">4. Cookies</h2>
+                <p>Notre site utilise des cookies pour améliorer votre expérience de navigation. Vous pouvez configurer votre navigateur pour refuser les cookies ou être averti lors de leur utilisation.</p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-3">5. Hébergement</h2>
+                <p>Ce site est hébergé par :</p>
+                <p><strong>{{ host_name }}</strong><br>
+                {{ host_address }}</p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h3 mb-3">6. Litiges</h2>
+                <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+            </section>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Besoin d'informations supplémentaires ?</h3>
+                    <p class="card-text">Si vous avez des questions concernant nos mentions légales, n'hésitez pas à nous contacter.</p>
+                    <a href="#" class="btn btn-primary">Contactez-nous</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

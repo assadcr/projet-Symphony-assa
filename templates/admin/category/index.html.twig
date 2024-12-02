@@ -1,0 +1,65 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}Categories
+{% endblock %}
+
+{% block body %}
+	<main>
+		<h1 class="mb-5">Liste des catégories</h1>
+
+		<section>
+			<div class="border rounded mb-5 p-3">
+				{{ form_start(form)}}
+				{{ form_rest(form)}}
+				<input type="submit" value="Enregister" class="btn btn-primary">
+				{{ form_end(form)}}
+			</div>
+		</section>
+
+		<section>
+			{% if categorie is not null %}
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Categorie</th>
+							<th>Modifier</th>
+							<th>Supprimer</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Categorie</th>
+							<th>Modifier</th>
+							<th>Supprimer</th>
+						</tr>
+					</tfoot>
+					{% for categorie in categories %}
+						<tbody>
+							<tr>
+								<th scope="row">
+									{{ categorie.id}}
+								</th>
+								<td>
+									{{ categorie.name }}
+								</td>
+								<td>
+									<a href={{ path('admin_category_index', { 'id': categorie.id} )}} class="btn btn-primary">Modifier</a>
+								</td>
+								<td>
+									<form action={{ path('admin_category_delete', { 'id': categorie.id} )}} method="POST">
+										<input type="hidden" name="_method" value="DELETE">
+										<input type="submit" value="Supprimer" class="btn btn-primary">
+									</form>
+								</td>
+							</tr>
+						</tbody>
+					{% endfor %}
+				</table>
+			{% endif %}
+		</section>
+
+	</main>
+{% endblock %}

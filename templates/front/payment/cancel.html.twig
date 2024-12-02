@@ -1,0 +1,9 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Paiement annulé{% endblock %}
+
+{% block body %}
+    <h1>Paiement annulé</h1>
+    <p>Votre paiement a été annulé. Aucun montant n'a été débité de votre compte.</p>
+    <a href="{{ path('front_cart_index') }}" class="btn btn-primary">Retour au panier</a>
+{% endblock %}

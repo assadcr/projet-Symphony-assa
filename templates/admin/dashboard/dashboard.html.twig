@@ -1,0 +1,12 @@
+{# admin/dashboard.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tableau de bord administratif</h1>
+    
+    <ul>
+        <li>Produits : {{ product_count }} - <a href="{{ path('admin_products') }}">Gérer les produits</a></li>
+        <li>Commandes : {{ order_count }} - <a href="{{ path('admin_orders') }}">Gérer les commandes</a></li>
+        <li>Utilisateurs : {{ user_count }} - <a href="{{ path('admin_users') }}">Gérer les utilisateurs</a></li>
+    </ul>
+{% endblock %}
